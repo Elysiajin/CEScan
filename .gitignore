@@ -1,0 +1,39 @@
+# Build artifacts
+obj/
+obj_*/
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.tlog
+*.ipdb
+*.iobj
+*.recipe
+*.log
+*.zip
+
+# Build output directories
+bin/
+驱动附加/build_out/
+
+# One-shot dev scripts / screenshots (kept local only)
+tools/
+
+# Editor / OS
+.vs/
+*.user
+*.suo
+Thumbs.db
+desktop.ini
+
+# Local scratch files
+crash.txt
+restore_trace.txt
+hook_now.txt
+ui_trace.txt
+*.bak
+*.bak_*
+
+# Dependency lock (not used by this project)
+node_modules/

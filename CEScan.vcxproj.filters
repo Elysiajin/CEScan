@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{a5dcc071-59ec-4fea-acbf-27577eb92bc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{efe46f22-b592-4160-8804-7ab0e6015ff9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\CETypes.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CEUtil.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DBVM.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DbvmLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DbvmTools.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Debugger.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Disasm.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GuiConfig.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\HookRestore.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\McpClient.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PatternScan.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ProcessMemory.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RegionFilter.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ScanEngine.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\StrSearch.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ThemeColors.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ThreadLocator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\CETypes.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CEUtil.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DBVM.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DbvmLoader.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DbvmTools.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Debugger.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Disasm.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HookRestore.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main_gui.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\McpClient.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PatternScan.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ProcessMemory.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RegionFilter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ScanEngine.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StrSearch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ThreadLocator.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
