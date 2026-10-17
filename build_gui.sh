@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# 编译 CEScanVC 的 GUI（bash 版）。产物为 bin/CEdbg.exe，
-# 避免与并行会话正在运行的 bin/CEScanGUI.exe 抢文件锁。
+# 编译 CEScanVC 的 GUI（bash 版）。产物为 bin/CEScan.exe。
 set -e
 cd "$(dirname "$0")"
 
@@ -10,7 +9,7 @@ export LIB="$VCBIN/lib"
 export PATH="$VCBIN/bin:$PATH"
 export MSYS2_ARG_CONV_EXCL="*"
 
-OUT="${1:-CEdbg}"
+OUT="${1:-CEScan}"
 CLFLAGS="/nologo /std:c++latest /utf-8 /EHsc /O2 /W3 /MT /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_WINSOCKAPI_ /Iinclude"
 mkdir -p obj_gui bin
 

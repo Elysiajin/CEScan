@@ -1,7 +1,8 @@
 @echo off
 rem ============================================================
 rem  CEScan x64 一键编译（自动探测工具链）
-rem  产物: bin\CEScan.exe(命令行) + bin\CEScanGUI.exe(图形界面)
+rem  产物: bin\CEScan.exe (图形界面, OllyDbg 风格 MDI 调试器 + 内存搜索)
+rem  注: CLI 版本已移除，只保留 GUI。
 rem
 rem  工具链探测顺序:
 rem    1) 便携版 MSVC(曙光C++IDE VC64, 含 SDK)
@@ -58,21 +59,15 @@ goto :fail
 
 :toolchain_ok
 set "CFLAGS=/nologo /std:c++latest /utf-8 /EHsc /O2 /W3 /MT /DNDEBUG /D_CRT_SECURE_NO_WARNINGS /D_WINSOCKAPI_ /Iinclude /Fo:obj\"
-set "SOURCES=CETypes CEUtil ProcessMemory RegionFilter PatternScan ScanEngine Disasm Debugger McpClient StrSearch DBVM DbvmLoader DbvmTools"
+set "SOURCES=CETypes CEUtil ProcessMemory RegionFilter PatternScan ScanEngine Disasm Debugger McpClient StrSearch HookRestore ThreadLocator DBVM DbvmLoader DbvmTools"
 
 echo.
-echo ==== 编译核心模块 (x64) ====
+echo ==== 编译模块 (x64) ====
 for %%f in (%SOURCES%) do (
   echo [编译] src\%%f.cpp
   %CL_EXE% %CFLAGS% /c src\%%f.cpp
   if errorlevel 1 goto :fail
 )
-
-echo ==== 编译命令行版 ====
-%CL_EXE% %CFLAGS% /c src\main.cpp
-if errorlevel 1 goto :fail
-%CL_EXE% %CFLAGS% /c src\main_entry.cpp
-if errorlevel 1 goto :fail
 
 echo ==== 编译图形界面版 (MDI) ====
 %CL_EXE% %CFLAGS% /c src\main_gui.cpp
@@ -80,19 +75,14 @@ if errorlevel 1 goto :fail
 
 echo.
 echo ==== 链接 bin\CEScan.exe ====
-%LINK_EXE% /nologo /OUT:bin\CEScan.exe /SUBSYSTEM:CONSOLE /MACHINE:X64 obj\main_entry.obj obj\main.obj obj\CETypes.obj obj\CEUtil.obj obj\ProcessMemory.obj obj\RegionFilter.obj obj\PatternScan.obj obj\ScanEngine.obj obj\Disasm.obj obj\Debugger.obj obj\McpClient.obj obj\StrSearch.obj obj\DBVM.obj obj\DbvmLoader.obj psapi.lib user32.lib advapi32.lib ole32.lib ws2_32.lib winhttp.lib
-if errorlevel 1 goto :fail
-
-echo ==== 链接 bin\CEScanGUI.exe ====
-%LINK_EXE% /nologo /OUT:bin\CEScanGUI.exe /SUBSYSTEM:WINDOWS /MACHINE:X64 obj\main_gui.obj obj\CETypes.obj obj\CEUtil.obj obj\ProcessMemory.obj obj\RegionFilter.obj obj\PatternScan.obj obj\ScanEngine.obj obj\Disasm.obj obj\Debugger.obj obj\McpClient.obj obj\StrSearch.obj obj\DBVM.obj obj\DbvmLoader.obj obj\DbvmTools.obj psapi.lib user32.lib advapi32.lib ole32.lib comctl32.lib gdi32.lib ws2_32.lib winhttp.lib
+%LINK_EXE% /nologo /OUT:bin\CEScan.exe /SUBSYSTEM:WINDOWS /MACHINE:X64 obj\main_gui.obj obj\CETypes.obj obj\CEUtil.obj obj\ProcessMemory.obj obj\RegionFilter.obj obj\PatternScan.obj obj\ScanEngine.obj obj\Disasm.obj obj\Debugger.obj obj\McpClient.obj obj\StrSearch.obj obj\HookRestore.obj obj\ThreadLocator.obj obj\DBVM.obj obj\DbvmLoader.obj obj\DbvmTools.obj psapi.lib user32.lib advapi32.lib ole32.lib oleaut32.lib comdlg32.lib comctl32.lib gdi32.lib ws2_32.lib winhttp.lib uxtheme.lib
 if errorlevel 1 goto :fail
 
 echo.
 echo ============================================================
 echo   编译完成!
-echo     bin\CEScan.exe     命令行版 (regions/scan/next)
-echo     bin\CEScanGUI.exe  OllyDbg 风格 MDI 调试器 + 内存搜索
-echo   均为 64 位 (x64) 程序
+echo     bin\CEScan.exe  OllyDbg 风格 MDI 调试器 + 内存搜索
+echo   64 位 (x64) 程序
 echo ============================================================
 pause
 exit /b 0

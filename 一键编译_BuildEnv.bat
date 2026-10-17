@@ -4,7 +4,7 @@ cd /d "%~dp0"
 
 rem ============================================================
 rem  One-click build using the local _BuildEnv toolchain.
-rem  Output: bin\CEdbg.exe  (GUI debugger + DBVM loader)
+rem  Output: bin\CEScan.exe  (GUI debugger + DBVM loader)
 rem
 rem  Toolchain is auto-located under %USERPROFILE%\Desktop
 rem  (folder "windows...\_BuildEnv") -- no Chinese literals here,
@@ -52,8 +52,8 @@ echo ==== Compile GUI ====
 if errorlevel 1 goto :fail
 
 echo.
-echo ==== Link bin\CEdbg.exe ====
-!LINK_EXE! /nologo /OUT:bin\CEdbg.exe /SUBSYSTEM:WINDOWS /MACHINE:X64 obj_be\main_gui.obj obj_be\CETypes.obj obj_be\CEUtil.obj obj_be\ProcessMemory.obj obj_be\RegionFilter.obj obj_be\PatternScan.obj obj_be\ScanEngine.obj obj_be\Disasm.obj obj_be\Debugger.obj obj_be\McpClient.obj obj_be\StrSearch.obj obj_be\HookRestore.obj obj_be\ThreadLocator.obj obj_be\DBVM.obj obj_be\DbvmLoader.obj obj_be\DbvmTools.obj psapi.lib user32.lib advapi32.lib ole32.lib oleaut32.lib comdlg32.lib comctl32.lib gdi32.lib ws2_32.lib winhttp.lib uxtheme.lib
+echo ==== Link bin\CEScan.exe ====
+!LINK_EXE! /nologo /OUT:bin\CEScan.exe /SUBSYSTEM:WINDOWS /MACHINE:X64 obj_be\main_gui.obj obj_be\CETypes.obj obj_be\CEUtil.obj obj_be\ProcessMemory.obj obj_be\RegionFilter.obj obj_be\PatternScan.obj obj_be\ScanEngine.obj obj_be\Disasm.obj obj_be\Debugger.obj obj_be\McpClient.obj obj_be\StrSearch.obj obj_be\HookRestore.obj obj_be\ThreadLocator.obj obj_be\DBVM.obj obj_be\DbvmLoader.obj obj_be\DbvmTools.obj psapi.lib user32.lib advapi32.lib ole32.lib oleaut32.lib comdlg32.lib comctl32.lib gdi32.lib ws2_32.lib winhttp.lib uxtheme.lib
 if errorlevel 1 goto :fail
 
 echo.
@@ -82,8 +82,8 @@ if exist "bin\vmdisk.img" (echo   [OK] bin\vmdisk.img) else (echo   [MISSING] bi
 echo.
 echo ============================================================
 echo   Build OK!
-echo     bin\CEdbg.exe  GUI debugger + DBVM loader
-echo   To use DBVM: run bin\CEdbg.exe as Administrator,
+echo     bin\CEScan.exe  GUI debugger + DBVM loader
+echo   To use DBVM: run bin\CEScan.exe as Administrator,
 echo   menu Plugin(P) -^> Load and start DBVM...  (needs bin\dbk64.sys + bin\vmdisk.img)
 echo ============================================================
 pause
